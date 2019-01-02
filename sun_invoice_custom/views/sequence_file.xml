@@ -1,0 +1,19 @@
+<odoo>
+
+    <data>
+        <function model="account.journal" name="_update_custom_sequence_name"/>
+    </data>
+
+    <report
+            id="reportid_custom_account_invoices"
+            model="account.invoice"
+            string="Invoices - Sun"
+            report_type="qweb-pdf"
+            name="sun_invoice_custom.custom_report_invoice"
+            file="sun_invoice_custom.custom_report_invoice"
+            attachment="(object.state in ('open','in_payment','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+            print_report_name="(object._get_report_base_filename())"
+            groups="account.group_account_invoice"
+        />
+
+</odoo>
